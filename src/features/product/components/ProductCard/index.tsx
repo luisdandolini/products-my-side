@@ -2,13 +2,17 @@ import Image from "next/image";
 import { formatToBRL } from "@/src/shared/utils/formatCurrency";
 import { Product } from "../../types";
 import styles from "./ProductCard.module.css";
+import Link from "next/link";
 
 interface ProductCardProps {
   product: Product;
   priority?: boolean;
 }
 
-export default function ProductCard({ product, priority = false }: ProductCardProps) {
+export default function ProductCard({
+  product,
+  priority = false,
+}: ProductCardProps) {
   return (
     <div className={styles.card}>
       <div className={styles.imageContainer}>
@@ -27,7 +31,9 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
         <h2 className={styles.title}>{product.title}</h2>
         <p className={styles.price}>{formatToBRL(product.price)}</p>
         <p className={styles.description}>{product.description}</p>
-        <button className={styles.button}>Ver produto</button>
+        <Link href={`/products/${product.id}`} className={styles.button}>
+          Ver produto
+        </Link>
       </div>
     </div>
   );
