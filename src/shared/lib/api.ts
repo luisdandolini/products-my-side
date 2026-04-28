@@ -9,8 +9,6 @@ export async function api(endpoint: string, options?: RequestInit) {
     },
   });
 
-  console.log(response);
-
   if (!response.ok) {
     const error = await response.json().catch(() => ({}));
     throw new Error(error.message || "Erro na requisição");
