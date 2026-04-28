@@ -1,0 +1,43 @@
+.page {
+  min-height: calc(100vh - 57px);
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  text-align: center;
+  padding: 32px;
+  max-width: 400px;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.message {
+  font-size: 0.9rem;
+  color: #64748b;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.button {
+  padding: 10px 24px;
+  border-radius: 10px;
+  border: 1.5px solid #0f172a;
+  background: transparent;
+  color: #0f172a;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s;
+}
+
+.button:hover {
+  background: #0f172a;
+  color: #ffffff;
+}
