@@ -84,8 +84,8 @@ export default function Products({ initialProducts, categories }: Props) {
         <p className={styles.emptyState}>Nenhum produto encontrado</p>
       ) : (
         <div className={styles.container}>
-          {filteredProducts.map((item) => (
-            <ProductCard key={item.id} product={item} />
+          {filteredProducts.map((item, index) => (
+            <ProductCard key={item.id} product={item} priority={index < 4} />
           ))}
         </div>
       )}

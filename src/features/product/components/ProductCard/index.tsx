@@ -5,9 +5,10 @@ import styles from "./ProductCard.module.css";
 
 interface ProductCardProps {
   product: Product;
+  priority?: boolean;
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
+export default function ProductCard({ product, priority = false }: ProductCardProps) {
   return (
     <div className={styles.card}>
       <div className={styles.imageContainer}>
@@ -16,6 +17,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           alt={product.title}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+          priority={priority}
           className={styles.image}
         />
       </div>
