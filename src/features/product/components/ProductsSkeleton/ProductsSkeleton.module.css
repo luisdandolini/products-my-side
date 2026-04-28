@@ -1,0 +1,105 @@
+@keyframes shimmer {
+  0% {
+    background-position: -600px 0;
+  }
+  100% {
+    background-position: 600px 0;
+  }
+}
+
+.page {
+  min-height: calc(100vh - 57px);
+  background: #f8fafc;
+  padding-bottom: 48px;
+}
+
+.filtersWrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 32px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.filtersRow {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+  background-size: 600px 100%;
+  animation: shimmer 1.4s infinite linear;
+  border-radius: 10px;
+}
+
+.searchSkeleton {
+  flex: 1;
+  min-width: 220px;
+  height: 42px;
+}
+
+.selectSkeleton {
+  width: 180px;
+  height: 42px;
+}
+
+.countSkeleton {
+  width: 140px;
+  height: 14px;
+  border-radius: 4px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 24px;
+  padding: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.cardImage {
+  width: 100%;
+  height: 200px;
+  border-radius: 0;
+}
+
+.cardBody {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.line {
+  height: 13px;
+  border-radius: 4px;
+}
+
+.lineShort {
+  height: 13px;
+  width: 65%;
+  border-radius: 4px;
+}
+
+.linePrice {
+  height: 20px;
+  width: 90px;
+  border-radius: 4px;
+}
+
+.lineButton {
+  height: 38px;
+  border-radius: 10px;
+  margin-top: 4px;
+}
