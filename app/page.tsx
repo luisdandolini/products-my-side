@@ -1,4 +1,4 @@
-import Products from "@/src/features/product";
+import Products from "@/src/features/product/components/Products";
 import { ProductService } from "@/src/features/product/services/productService";
 
 export const revalidate = 3600;

@@ -1,13 +1,13 @@
 "use client";
 
 import { useState, useMemo, useDeferredValue } from "react";
-import ProductCard from "./components/ProductCard";
 import { Pagination } from "@/src/shared/components/Pagination";
 import styles from "./Products.module.css";
-import { Product } from "./types";
 import Input from "@/src/shared/components/Input";
 import Select from "@/src/shared/components/Select";
 import Button from "@/src/shared/components/Button";
+import { Product } from "../../types";
+import ProductCard from "../ProductCard";
 
 const ITEMS_PER_PAGE = 8;
 
