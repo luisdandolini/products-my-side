@@ -1,3 +1,5 @@
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import Button from "../Button";
 import styles from "./Pagination.module.css";
 
 interface PaginationProps {
@@ -15,25 +17,25 @@ export function Pagination({
 
   return (
     <div className={styles.wrapper}>
-      <button
+      <Button
         className={styles.button}
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
       >
-        Anterior
-      </button>
+        <ArrowLeft size={14} /> Anterior
+      </Button>
 
       <span className={styles.info}>
         {currentPage} de {totalPages}
       </span>
 
-      <button
+      <Button
         className={styles.button}
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
       >
-        Próximo
-      </button>
+        Próximo <ArrowRight size={14} />
+      </Button>
     </div>
   );
 }

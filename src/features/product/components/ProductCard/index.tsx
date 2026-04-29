@@ -4,6 +4,8 @@ import { Product } from "../../types";
 import styles from "./ProductCard.module.css";
 import Link from "next/link";
 import { useCart } from "@/src/shared/hooks/useCart";
+import Button from "@/src/shared/components/Button";
+import { PlusCircle } from "lucide-react";
 
 interface ProductCardProps {
   product: Product;
@@ -37,9 +39,10 @@ export default function ProductCard({
         <Link href={`/products/${product.id}`} className={styles.button}>
           Ver produto
         </Link>
-        <button className={styles.button} onClick={() => addToCart(product)}>
-          Adicionar ao carrinho
-        </button>
+
+        <Button className={styles.button} onClick={() => addToCart(product)}>
+          Adicionar ao carrinho <PlusCircle size={16} />
+        </Button>
       </div>
     </div>
   );

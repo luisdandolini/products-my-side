@@ -1,3 +1,4 @@
+import Button from "../Button";
 import styles from "./ErrorState.module.css";
 
 interface ErrorStateProps {
@@ -13,9 +14,10 @@ export default function ErrorState({ reset }: ErrorStateProps) {
           Não foi possível carregar os produtos. Verifique sua conexão e tente
           novamente.
         </p>
-        <button onClick={reset} className={styles.button}>
+
+        <Button onClick={reset} className={styles.button}>
           Tentar novamente
-        </button>
+        </Button>
       </div>
     </div>
   );

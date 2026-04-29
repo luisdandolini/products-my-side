@@ -7,7 +7,8 @@ import { Product } from "../../types";
 import ProductCard from "../ProductCard";
 import styles from "./ProductDetail.module.css";
 import { useCart } from "@/src/shared/hooks/useCart";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, PlusCircle } from "lucide-react";
+import Button from "@/src/shared/components/Button";
 
 interface ProductDetailProps {
   product: Product;
@@ -50,12 +51,12 @@ export default function ProductDetail({
             <span className={styles.descriptionLabel}>Descrição</span>
             <p className={styles.description}>{product.description}</p>
 
-            <button
+            <Button
               className={styles.button}
               onClick={() => addToCart(product)}
             >
-              Adicionar ao carrinho
-            </button>
+              Adicionar ao carrinho <PlusCircle size={16} />
+            </Button>
           </div>
         </div>
 

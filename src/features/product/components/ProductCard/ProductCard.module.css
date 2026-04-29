@@ -78,6 +78,10 @@
 }
 
 .button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   margin-top: 12px;
   padding: 10px;
   border-radius: 10px;
