@@ -55,7 +55,7 @@ export default function ProductDetail({
               className={styles.button}
               onClick={() => addToCart(product)}
             >
-              Adicionar ao carrinho <PlusCircle size={16} />
+              <PlusCircle size={16} /> Adicionar ao carrinho
             </Button>
           </div>
         </div>
