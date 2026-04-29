@@ -75,25 +75,3 @@ a {
   white-space: nowrap;
   border-width: 0;
 }
-
-.container {
-  width: 100%;
-  max-width: var(--container-max-width);
-  margin-inline: auto;
-  padding-inline: 1rem;
-}
-
-.app-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: #0f172a;
-  padding: 16px 0;
-}
-
-.app-header__logo {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #f8fafc;
-  letter-spacing: -0.02em;
-}

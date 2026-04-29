@@ -6,7 +6,9 @@
   flex-direction: column;
   border: 1px solid #e2e8f0;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
   cursor: pointer;
 }
 
@@ -85,7 +87,10 @@
   font-size: 0.875rem;
   font-weight: 600;
   width: 100%;
-  transition: background 0.2s, color 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s;
+  text-align: center;
 }
 
 .button:hover {

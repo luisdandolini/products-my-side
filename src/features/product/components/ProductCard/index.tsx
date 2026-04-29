@@ -3,6 +3,7 @@ import { formatToBRL } from "@/src/shared/utils/formatCurrency";
 import { Product } from "../../types";
 import styles from "./ProductCard.module.css";
 import Link from "next/link";
+import { useCart } from "@/src/shared/hooks/useCart";
 
 interface ProductCardProps {
   product: Product;
@@ -13,6 +14,8 @@ export default function ProductCard({
   product,
   priority = false,
 }: ProductCardProps) {
+  const { addToCart } = useCart();
+
   return (
     <div className={styles.card}>
       <div className={styles.imageContainer}>
@@ -34,6 +37,9 @@ export default function ProductCard({
         <Link href={`/products/${product.id}`} className={styles.button}>
           Ver produto
         </Link>
+        <button className={styles.button} onClick={() => addToCart(product)}>
+          Adicionar ao carrinho
+        </button>
       </div>
     </div>
   );

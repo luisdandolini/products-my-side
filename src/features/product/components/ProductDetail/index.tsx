@@ -1,23 +1,31 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { formatToBRL } from "@/src/shared/utils/formatCurrency";
 import { Product } from "../../types";
 import ProductCard from "../ProductCard";
 import styles from "./ProductDetail.module.css";
+import { useCart } from "@/src/shared/hooks/useCart";
+import { ArrowLeft } from "lucide-react";
 
 interface ProductDetailProps {
   product: Product;
   related: Product[];
 }
 
-export default function ProductDetail({ product, related }: ProductDetailProps) {
+export default function ProductDetail({
+  product,
+  related,
+}: ProductDetailProps) {
+  const { addToCart } = useCart();
   const relatedProducts = related.filter((item) => item.id !== product.id);
 
   return (
     <div className={styles.page}>
       <div className={styles.container}>
         <Link href="/" className={styles.back}>
-          ← Voltar para produtos
+          <ArrowLeft size={16} /> Voltar para produtos
         </Link>
 
         <div className={styles.product}>
@@ -42,7 +50,12 @@ export default function ProductDetail({ product, related }: ProductDetailProps) 
             <span className={styles.descriptionLabel}>Descrição</span>
             <p className={styles.description}>{product.description}</p>
 
-            <button className={styles.button}>Adicionar ao carrinho</button>
+            <button
+              className={styles.button}
+              onClick={() => addToCart(product)}
+            >
+              Adicionar ao carrinho
+            </button>
           </div>
         </div>
 

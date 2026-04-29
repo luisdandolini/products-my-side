@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { CartProvider } from "@/src/shared/context/CartContext";
+import Header from "@/src/shared/components/Header";
 
 export const metadata: Metadata = {
   title: "Fake Store",
@@ -14,12 +16,10 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body>
-        <header className="app-header">
-          <div className="container">
-            <span className="app-header__logo">FakeStore</span>
-          </div>
-        </header>
-        <main>{children}</main>
+        <CartProvider>
+          <Header />
+          <main>{children}</main>
+        </CartProvider>
       </body>
     </html>
   );
