@@ -3,8 +3,6 @@
 import { ShoppingCart } from "lucide-react";
 import { useCart } from "../../hooks/useCart";
 import styles from "./Header.module.css";
-import Button from "../Button";
-import CartContainer from "../../../features/cart/components/CartContainer";
 import Link from "next/link";
 
 export default function Header() {

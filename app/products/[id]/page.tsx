@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import { ProductService } from "@/src/features/product/services/productService";
 import ProductDetail from "@/src/features/product/components/ProductDetail";
 
@@ -15,7 +16,10 @@ interface ProductParams {
 export default async function ProductById({ params }: ProductParams) {
   const { id } = await params;
 
-  const product = await ProductService.getProductById(id);
+  const product = await ProductService.getProductById(id).catch(() => null);
+
+  if (!product) notFound();
+
   const related = await ProductService.getProductsByCategory(product.category);
 
   return <ProductDetail product={product} related={related} />;
