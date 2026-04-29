@@ -2,8 +2,11 @@
 
 import { useState, useMemo, useDeferredValue } from "react";
 import ProductCard from "./components/ProductCard";
+import { Pagination } from "@/src/shared/components/Pagination";
 import styles from "./Products.module.css";
 import { Product } from "./types";
+
+const ITEMS_PER_PAGE = 8;
 
 interface Props {
   initialProducts: Product[];
@@ -13,6 +16,7 @@ interface Props {
 export default function Products({ initialProducts, categories }: Props) {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
 
   const deferredSearch = useDeferredValue(searchTerm);
 
@@ -30,11 +34,23 @@ export default function Products({ initialProducts, categories }: Props) {
   }, [initialProducts, deferredSearch, selectedCategory]);
 
   const count = filteredProducts.length;
+  const totalPages = Math.ceil(count / ITEMS_PER_PAGE);
   const hasActiveFilters = searchTerm !== "" || selectedCategory !== "";
+
+  const paginatedProducts = filteredProducts.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE,
+  );
 
   function clearFilters() {
     setSearchTerm("");
     setSelectedCategory("");
+    setCurrentPage(1);
+  }
+
+  function handleFilterChange(fn: () => void) {
+    fn();
+    setCurrentPage(1);
   }
 
   return (
@@ -49,7 +65,9 @@ export default function Products({ initialProducts, categories }: Props) {
             type="text"
             placeholder="Pesquisar produto..."
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={(e) =>
+              handleFilterChange(() => setSearchTerm(e.target.value))
+            }
             className={styles.searchBar}
           />
           <label htmlFor="category" className="sr-only">
@@ -58,7 +76,9 @@ export default function Products({ initialProducts, categories }: Props) {
           <select
             id="category"
             value={selectedCategory}
-            onChange={(e) => setSelectedCategory(e.target.value)}
+            onChange={(e) =>
+              handleFilterChange(() => setSelectedCategory(e.target.value))
+            }
             className={styles.select}
           >
             <option value="">Todas as categorias</option>
@@ -84,11 +104,17 @@ export default function Products({ initialProducts, categories }: Props) {
         <p className={styles.emptyState}>Nenhum produto encontrado</p>
       ) : (
         <div className={styles.container}>
-          {filteredProducts.map((item, index) => (
+          {paginatedProducts.map((item, index) => (
             <ProductCard key={item.id} product={item} priority={index < 4} />
           ))}
         </div>
       )}
+
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={setCurrentPage}
+      />
     </div>
   );
 }
