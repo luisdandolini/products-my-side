@@ -4,6 +4,8 @@ import { ShoppingCart } from "lucide-react";
 import { useCart } from "../../hooks/useCart";
 import styles from "./Header.module.css";
 import Button from "../Button";
+import CartContainer from "../../../features/cart/components/CartContainer";
+import Link from "next/link";
 
 export default function Header() {
   const { totalItems } = useCart();
@@ -13,11 +15,15 @@ export default function Header() {
       <div className={styles.container}>
         <span className={styles.logo}>FakeStore</span>
 
-        <Button aria-label="Carrinho de compras" className={styles.cartButton}>
+        <Link
+          href={"/cart"}
+          aria-label="Carrinho de compras"
+          className={styles.cartButton}
+        >
           <ShoppingCart size={22} />
 
           {totalItems > 0 && <span className={styles.badge}>{totalItems}</span>}
-        </Button>
+        </Link>
       </div>
     </header>
   );

@@ -1,0 +1,26 @@
+.page {
+  min-height: calc(100vh - 57px);
+  background: #f8fafc;
+  padding-bottom: 64px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #64748b;
+  margin-bottom: 40px;
+  transition: color 0.2s;
+}
+
+.back:hover {
+  color: #0f172a;
+}
