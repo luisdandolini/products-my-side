@@ -5,6 +5,9 @@ import ProductCard from "./components/ProductCard";
 import { Pagination } from "@/src/shared/components/Pagination";
 import styles from "./Products.module.css";
 import { Product } from "./types";
+import Input from "@/src/shared/components/Input";
+import Select from "@/src/shared/components/Select";
+import Button from "@/src/shared/components/Button";
 
 const ITEMS_PER_PAGE = 8;
 
@@ -57,12 +60,9 @@ export default function Products({ initialProducts, categories }: Props) {
     <div className={styles.page}>
       <div className={styles.filtersWrapper}>
         <div className={styles.filters}>
-          <label htmlFor="search" className="sr-only">
-            Pesquisar produto
-          </label>
-          <input
+          <Input
             id="search"
-            type="text"
+            label="Pesquisar produto"
             placeholder="Pesquisar produto..."
             value={searchTerm}
             onChange={(e) =>
@@ -70,28 +70,23 @@ export default function Products({ initialProducts, categories }: Props) {
             }
             className={styles.searchBar}
           />
-          <label htmlFor="category" className="sr-only">
-            Filtrar por categoria
-          </label>
-          <select
+
+          <Select
             id="category"
+            label="Filtrar por categoria"
+            item="Todas as categorias"
             value={selectedCategory}
             onChange={(e) =>
               handleFilterChange(() => setSelectedCategory(e.target.value))
             }
             className={styles.select}
-          >
-            <option value="">Todas as categorias</option>
-            {categories.map((category) => (
-              <option key={category} value={category}>
-                {category}
-              </option>
-            ))}
-          </select>
+            options={categories}
+          />
+
           {hasActiveFilters && (
-            <button onClick={clearFilters} className={styles.clearButton}>
+            <Button onClick={clearFilters} className={styles.clearButton}>
               Limpar filtros
-            </button>
+            </Button>
           )}
         </div>
         <p className={styles.resultsCount}>
