@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fake Store
 
-## Getting Started
+Aplicação web de listagem de produtos construída com Next.js, consumindo a [Fake Store API](https://fakestoreapi.com). Permite buscar, filtrar e visualizar produtos, além de gerenciar um carrinho de compras.
 
-First, run the development server:
+## Tecnologias
+
+- [Next.js 16](https://nextjs.org/) — App Router, SSG, ISR
+- [React 19](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [CSS Modules](https://github.com/css-modules/css-modules)
+- [Lucide React](https://lucide.dev/) — ícones
+- [Jest](https://jestjs.io/) + [React Testing Library](https://testing-library.com/)
+
+## Funcionalidades
+
+- Listagem de produtos em grid responsivo
+- Busca por nome e filtragem por categoria
+- Paginação client-side
+- Página de detalhes do produto com produtos relacionados
+- Carrinho de compras com Context API (persiste entre páginas)
+- Loading skeleton e tratamento de erros
+- Página 404 personalizada
+
+## Pré-requisitos
+
+- [Node.js](https://nodejs.org/) >= 18
+- [Yarn](https://yarnpkg.com/)
+
+## Instalação
+
+Clone o repositório e instale as dependências:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/luisdandolini/products-my-side.git
+cd products-my-side
+yarn install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Variáveis de ambiente
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Crie um arquivo `.env.local` na raiz do projeto:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```.env.local
+NEXT_PUBLIC_API_URL=https://fakestoreapi.com
+```
 
-## Learn More
+## Rodando o projeto
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+yarn dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Acesse [http://localhost:3000](http://localhost:3000).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Testes
 
-## Deploy on Vercel
+```bash
+# Rodar todos os testes
+yarn test
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Modo watch (re-executa ao salvar)
+yarn test:watch
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Build
+
+```bash
+yarn build
+yarn start
+```
