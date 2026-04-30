@@ -1,7 +1,7 @@
 import Products from "@/src/features/product/components/Products";
 import { ProductService } from "@/src/features/product/services/productService";
 
-export const revalidate = 3600;
+export const dynamic = "force-dynamic";
 
 export default async function Home() {
   const products = await ProductService.getProducts();
