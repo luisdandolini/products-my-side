@@ -34,7 +34,7 @@ export default async function ProductById({ params }: ProductParams) {
     notFound();
   }
 
-  const related = await ProductService.getProductsByCategory(product.category);
+  const related = await ProductService.getProductsByCategory(product.category).catch(() => []);
 
   return <ProductDetail product={product} related={related} />;
 }
