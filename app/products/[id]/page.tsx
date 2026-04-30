@@ -4,9 +4,21 @@ import ProductDetail from "@/src/features/product/components/ProductDetail";
 
 export const revalidate = 3600;
 
+export const dynamicParams = true;
+
 export async function generateStaticParams() {
-  const products = await ProductService.getProducts();
-  return products.map((product) => ({ id: String(product.id) }));
+  try {
+    const products = await ProductService.getProducts();
+
+    if (!Array.isArray(products)) return [];
+
+    return products.map((product) => ({
+      id: String(product.id),
+    }));
+  } catch (error) {
+    console.error("Falha ao gerar params estáticos:", error);
+    return [];
+  }
 }
 
 interface ProductParams {
@@ -18,7 +30,9 @@ export default async function ProductById({ params }: ProductParams) {
 
   const product = await ProductService.getProductById(id).catch(() => null);
 
-  if (!product) notFound();
+  if (!product) {
+    notFound();
+  }
 
   const related = await ProductService.getProductsByCategory(product.category);
 
